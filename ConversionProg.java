@@ -5,22 +5,35 @@ public class ConversionProg
   
   public static void main(String[] args)
   {
-    Scanner scn = new Scanner(System.in);
-    
+    promptCheck();
+    return;
+  }
   
-    double dist;
-    
-    int num;
-    do{
+  public static void promptCheck()
+  {
+  	double dist = 0;
+    //String arr[] = {"",""};
+    int num = 0;
+  	Scanner scn = new Scanner(System.in);
+  	do{
     	System.out.println("Please enter a distance in meters: ");
-    	dist = scn.nextDouble();
+    	if (scn.hasNextDouble())
+    	{
+    		dist = scn.nextDouble();
+    	}else {
+    		System.out.println("Not a valid input");
+			promptCheck();
+			return;
+    	}
     	menu();
     	if (scn.hasNextInt())
     	{
     		num = scn.nextInt();
     	} else {
-     		System.out.println("Error: invalid expression");
-      		return;
+     	
+    		System.out.println("Not a valid input");
+    		promptCheck();
+    		return;
     	}
     	if (num == 1)
     	{
@@ -34,13 +47,13 @@ public class ConversionProg
     	} else if (num == 4)
     	{
     		System.out.println("Goodbye, have a nice day!");
+    		
     	} else {
       		System.out.println("What?");
     	}
     }
     while (num != 4);
   }
-  
   public static void menu()
   {
     System.out.println("Please enter the number of the option:");
