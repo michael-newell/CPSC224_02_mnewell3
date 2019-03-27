@@ -44,7 +44,7 @@ public class main extends JFrame implements ActionListener {
         addMouseListener(new MyMouseListener());
         addMouseMotionListener(new MyMouseMotionListener());
 
-        tListener = new Timer(200, this);
+        tListener = new Timer(250, this);
         tListener.start();
 
         setVisible(true);
@@ -97,7 +97,6 @@ public class main extends JFrame implements ActionListener {
         public void mouseMoved(MouseEvent e) {
             MouseX = e.getX();
             MouseY = e.getY();
-
         }
 
         public void mouseDragged(MouseEvent e) {
