@@ -105,7 +105,7 @@ public class main extends JFrame implements ActionListener {
             
         }
         public void mousePressed(MouseEvent e) {
-           
+            System.out.println("I love it when you press your mouse :)");
         }
         public void mouseReleased(MouseEvent e) {
            
