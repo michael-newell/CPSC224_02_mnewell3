@@ -6,6 +6,22 @@ import java.awt.event.*;
 
 public class main extends JPanel
 {
+	static int windowW = 800;
+	static int windowH = 800;
+	int centerX = windowW / 2;
+	int centerY = windowH / 2;	
+	
+	int []mountain1x = {(windowW / 4), (windowW / 4) * 2, (windowW / 4) * 3};
+	int []mountain1y = {windowH, 100, windowH};
+
+	int []mountain2x = {0, (windowW / 4), (windowW / 4) * 2};
+	int []mountain2y = {windowH, 100, windowH};
+
+	int []mountain3x = {(windowW / 4) * 2, (windowW / 4) * 3, windowW};
+	int []mountain3y = {windowH, 100, windowH};
+	
+	
+
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -13,28 +29,22 @@ public class main extends JPanel
 		setBackground(Color.CYAN);
 
 		//first mountain
-		int []xarr = {200, 400, 600};
-		int []yarr = {800, 100, 800};
-		g.fillPolygon(xarr, yarr, 3);
+		g.fillPolygon(mountain1x, mountain1y, 3);
 	
 		//second mountain
- 		xarr = new int[] {0, 200, 400};
-		yarr = new int[] {800, 100, 800};
 		g.setColor(Color.YELLOW);
-		g.fillPolygon(xarr, yarr, 3);
+		g.fillPolygon(mountain2x, mountain2y, 3);
 		addListeners();
 
 		//third mountain
- 		xarr = new int[] {400, 600, 800};
-		yarr = new int[] {800, 100, 800};
 		g.setColor(Color.GRAY);
-		g.fillPolygon(xarr, yarr, 3);
+		g.fillPolygon(mountain3x, mountain3y, 3);
 		addListeners();
 
 		//ground
 		Color brown = new Color(150,75,0);
 		g.setColor(brown);
-		g.fillRect(0, 675, 800, 50);
+		g.fillRect(0, 675, 800, 300);
 	}
 	
 	public static void main(String[] args)
@@ -43,7 +53,7 @@ public class main extends JPanel
 		JFrame frame = new JFrame();
 		
 		frame.setTitle("Motion Parallax");
-		frame.setSize(800,800);
+		frame.setSize(windowW, windowH);
 		
 		frame.setVisible(true);
 		
@@ -65,7 +75,7 @@ public class main extends JPanel
 
       public void mouseClicked(MouseEvent e)
       {
-                System.out.println("Clicked!");
+                
       }
 
       public void mouseReleased(MouseEvent e)
@@ -80,7 +90,14 @@ public class main extends JPanel
 
       public void mouseExited(MouseEvent e)
       {
-         
+         mountain1x = new int[]{(windowW / 4), (windowW / 4) * 2, (windowW / 4) * 3};
+	 mountain1y = new int[]{windowH, 100, windowH};
+
+	 mountain2x = new int[]{0, (windowW / 4), (windowW / 4) * 2};
+	 mountain2y = new int[]{windowH, 100, windowH};
+
+	 mountain3x = new int[]{(windowW / 4) * 2, (windowW / 4) * 3, windowW};
+	 mountain3y = new int[]{windowH, 100, windowH};
       }
    }
 
@@ -93,7 +110,24 @@ public class main extends JPanel
 
       public void mouseMoved(MouseEvent e)
       {
-         
+	int mouseX = e.getX();
+	int mouseY = e.getY();
+	if (mouseX > centerX + 10)
+	{
+		for (int i = 0; i < mountain1x.length; i++)
+		{
+			mountain1x[i] += 3;
+			mountain2x[i] += 2;
+			mountain3x[i] += 1;
+		}
+		if (mouseX > 500)
+		{
+			centerX = 500;
+		}
+	}
+
+	
+	repaint();		 
       }
    }
 }
