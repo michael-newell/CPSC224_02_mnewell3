@@ -111,7 +111,7 @@ public class main extends JFrame implements ActionListener {
             System.out.println(":'O");
         }
         public void mouseEntered(MouseEvent e) {
-            
+            System.out.println("Hello! Welcome to the program, enjoy your stay");
         }
         public void mouseExited(MouseEvent e) {
             
