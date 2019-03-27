@@ -114,7 +114,7 @@ public class main extends JFrame implements ActionListener {
             System.out.println("Hello! Welcome to the program, enjoy your stay");
         }
         public void mouseExited(MouseEvent e) {
-            
+            System.out.println("Leaving so soon? was it something I said? :(");
         }
     }
     
